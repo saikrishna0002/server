@@ -159,7 +159,8 @@ const deleteFaculty = asyncHandler(async (req, res) => {
 
     try {
         const result = await Faculty.deleteOne({ FacultyId });
-
+        const result1 = await facultyTimeTableModel.deleteOne({ FacultyId });
+        
         if (result.deletedCount === 0) {
             res.status(404).json({ message: 'Faculty not found' });
         } else {
