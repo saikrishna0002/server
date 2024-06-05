@@ -28,6 +28,9 @@ const facultySchema = mongoose.Schema({
         type:String,
         required:true,
     },
+    FacultyDateOfJoining:{
+        type:String,
+    },
     FacultyAddress:{
         type:String,
         required:true,

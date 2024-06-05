@@ -1,5 +1,5 @@
 const express = require('express');
-const { loginFaculty, createFaculty, getFacultyData, getFacultyTimeTable, makrAttendance, getFacultyByDepartment, updateFaculty, getAllFacultyTimeTable, updateFacultyTimeTable, resetAttendance, deleteFaculty } = require('../controllers/facultyConttroller');
+const { loginFaculty, createFaculty, getFacultyData, getFacultyTimeTable, makrAttendance, getFacultyByDepartment, updateFaculty, getAllFacultyTimeTable, updateFacultyTimeTable, resetAttendance, deleteFaculty, updateUsernamePassword } = require('../controllers/facultyConttroller');
 const validateToken = require("../config/tokenValidator");
 const { SearchForSubstitute, sendingSubstituteRequest, acceptOrRejectRequest, getSubstituteConfirm } = require('../controllers/assignSubstituteController');
 
@@ -20,6 +20,7 @@ router.route("/getAllFacultyTimeTable").get(getAllFacultyTimeTable);
 router.route("/updateFacultyTimeTable").post(updateFacultyTimeTable);
 router.route("/resetAttendance").get(resetAttendance);
 router.route("/deleteFaculty").post(deleteFaculty);
+router.route("/updateUsernamePassword").post(validateToken,updateUsernamePassword);
 
 
 

@@ -89,6 +89,13 @@ const getFacultyByDepartment = asyncHandler(async(req,res)=>{
     res.json(faculties);
 });
 
+const updateUsernamePassword = asyncHandler(async(req,res)=>{
+    const {UserName,Password} = req.body;
+    const currentUser = await Faculty.findOne({ FacultyId: req.user.id} );
+    currentUser.UserName = UserName;
+    currentUser.Password = Password;
+    await currentUser.save();
+})
 
 const resetAttendance = asyncHandler(async (req, res) => {
     try {
@@ -284,4 +291,4 @@ async function assignTimeTableToFaculty(req, res) {
 // assignDataToFaculty();
 
 
-module.exports = {deleteFaculty,resetAttendance,updateFacultyTimeTable,assignTimeTableToFaculty,createFaculty,loginFaculty,getFacultyData,getFacultyByDepartment,getFacultyTimeTable,getFacultyByDepartmentShort,getFacultyById,updateFaculty,makrAttendance,getAllFacultyTimeTable};
+module.exports = {updateUsernamePassword,deleteFaculty,resetAttendance,updateFacultyTimeTable,assignTimeTableToFaculty,createFaculty,loginFaculty,getFacultyData,getFacultyByDepartment,getFacultyTimeTable,getFacultyByDepartmentShort,getFacultyById,updateFaculty,makrAttendance,getAllFacultyTimeTable};
